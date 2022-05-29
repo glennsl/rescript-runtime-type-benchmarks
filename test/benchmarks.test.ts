@@ -31,6 +31,7 @@ import '../cases/typeofweb-schema';
 import '../cases/valita';
 import '../cases/yup';
 import '../cases/zod';
+import '../cases/rescript-struct';
 
 test('all cases must have been imported in tests', () => {
   const registeredCases = new Set<string>();

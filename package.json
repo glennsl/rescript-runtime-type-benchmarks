@@ -12,12 +12,13 @@
     "lint": "gts check",
     "lint:fix": "gts fix",
     "start": "ts-node index.ts",
-    "test:build": "npm run compile:spectypes && tsc --noEmit",
-    "test": "npm run compile:spectypes && jest",
+    "test:build": "npm run compile:spectypes && npm run compile:rescript && tsc --noEmit",
+    "test": "npm run compile:spectypes && npm run compile:rescript && jest",
     "docs:serve": "serve docs",
     "docs:watch": "tsc --project tsconfig.docs.json --watch --preserveWatchOutput & serve docs",
     "docs:build": "tsc --project tsconfig.docs.json",
-    "compile:spectypes": "rimraf cases/spectypes/build && tsc -p cases/spectypes/src && babel cases/spectypes/src --out-dir cases/spectypes/build --extensions \".ts\""
+    "compile:spectypes": "rimraf cases/spectypes/build && tsc -p cases/spectypes/src && babel cases/spectypes/src --out-dir cases/spectypes/build --extensions \".ts\"",
+    "compile:rescript": "rimraf cases/**/*.bs.js && rescript build -with-deps"
   },
   "dependencies": {
     "@ailabs/ts-utils": "1.4.0",
@@ -47,6 +48,8 @@
     "preact": "10.7.2",
     "purify-ts": "1.2.0",
     "reflect-metadata": "0.1.13",
+    "rescript": "^9.1.4",
+    "rescript-struct": "^0.11.0",
     "rulr": "8.7.4",
     "runtypes": "6.5.1",
     "serve": "12.0.1",

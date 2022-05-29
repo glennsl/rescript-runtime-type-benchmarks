@@ -1,0 +1,15 @@
+{
+  "name": "rescript-runtime-type-benchmarks",
+  "bs-dependencies": ["rescript-struct"],
+  "suffix": ".bs.js",
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "sources": [
+    {
+      "dir": "cases",
+      "subdirs": true
+    }
+  ]
+}

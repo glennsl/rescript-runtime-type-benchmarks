@@ -1,0 +1,1 @@
+import './RescriptStructCase.bs.js';

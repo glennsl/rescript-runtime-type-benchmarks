@@ -27,6 +27,7 @@ export const cases = [
   'valita',
   'yup',
   'zod',
+  'rescript-struct',
 ] as const;
 
 export type CaseName = typeof cases[number];
