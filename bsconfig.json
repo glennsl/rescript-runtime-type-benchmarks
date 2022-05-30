@@ -1,6 +1,6 @@
 {
   "name": "rescript-runtime-type-benchmarks",
-  "bs-dependencies": ["rescript-struct"],
+  "bs-dependencies": ["rescript-struct", "rescript-jzon"],
   "suffix": ".bs.js",
   "package-specs": {
     "module": "commonjs",

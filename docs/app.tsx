@@ -5,7 +5,7 @@ import * as vegaLite from 'vega-lite';
 
 // which results are attempted to load
 // the first is selected automatically
-const NODE_VERSIONS = [17, 16, 14, 12];
+const NODE_VERSIONS = [14];
 
 interface BenchmarkResult {
   name: string;
@@ -88,7 +88,7 @@ function normalizePartialValues(values: BenchmarkResult[]): BenchmarkResult[] {
     normalized.push(...results);
 
     const missingBenchmarks = BENCHMARKS.map(b => b.name).filter(
-      n => !results.find(r => r.name === n)
+      n => !results.find(r => r.benchmark === n)
     );
 
     missingBenchmarks.forEach(benchmark => {
