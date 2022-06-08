@@ -209,7 +209,6 @@ define("app", ["require", "exports", "preact", "vega", "vega-lite"], function (r
                                 colorScaleRange.push(b.color);
                             }
                         });
-                        console.log(values);
                         if (sort === 'fastest') {
                             sortedValues = values.sort(function (a, b) { return b.ops - a.ops; });
                         }
