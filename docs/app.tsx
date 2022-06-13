@@ -412,7 +412,7 @@ class App extends Component<
           }}
         >
           <h1>Runtype Benchmarks</h1>
-          <a href="https://github.com/moltar/typescript-runtime-type-benchmarks/">
+          <a href="https://github.com/DZakh/rescript-runtime-type-benchmarks">
             Github Repository
           </a>
         </div>

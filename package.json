@@ -1,11 +1,11 @@
 {
   "private": true,
-  "name": "typescript-runtime-type-benchmarks",
-  "description": "Benchmark Comparison of TypeScript Runtime Type Support Modules",
+  "name": "rescript-runtime-type-benchmarks",
+  "description": "Benchmark Comparison of Packages with Runtime Validation and ReScript Support",
   "license": "MIT",
   "author": {
-    "name": "Roman Filippov",
-    "email": "rf@romanfilippov.com"
+    "name": "Dmitry Zakharov",
+    "email": "dzakh.dev@gmail.com"
   },
   "version": "1.0.0",
   "scripts": {
@@ -89,6 +89,7 @@
   "keywords": [
     "benchmarks",
     "types",
-    "typescript"
+    "typescript",
+    "ReScript"
   ]
 }
