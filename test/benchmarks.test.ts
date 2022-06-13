@@ -34,6 +34,7 @@ import '../cases/zod';
 import '../cases/rescript-struct';
 import '../cases/rescript-jzon';
 import '../cases/bs-json';
+import '../cases/decco';
 
 test('all cases must have been imported in tests', () => {
   const registeredCases = new Set<string>();

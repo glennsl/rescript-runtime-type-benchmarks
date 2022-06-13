@@ -1,6 +1,12 @@
 {
   "name": "rescript-runtime-type-benchmarks",
-  "bs-dependencies": ["rescript-struct", "rescript-jzon", "@glennsl/bs-json"],
+  "bs-dependencies": [
+    "rescript-struct",
+    "rescript-jzon",
+    "@glennsl/bs-json",
+    "decco"
+  ],
+  "ppx-flags": ["decco/ppx"],
   "suffix": ".bs.js",
   "package-specs": {
     "module": "commonjs",

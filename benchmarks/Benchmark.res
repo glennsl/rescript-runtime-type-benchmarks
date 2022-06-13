@@ -14,6 +14,11 @@ module Data = {
 module Case = {
   type options = {disabled: bool}
   @module("./index")
-  external make: (string, string, (unit, 'data) => 'parsedData, ~options: options=?, unit) => unit =
-    "createCase"
+  external make: (
+    string,
+    string,
+    (unit, . 'data) => 'parsedData,
+    ~options: options=?,
+    unit,
+  ) => unit = "createCase"
 }

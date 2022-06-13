@@ -39,6 +39,7 @@
     "clone": "2.1.2",
     "computed-types": "1.11.2",
     "csv-stringify": "5.6.5",
+    "decco": "^1.5.0",
     "decoders": "1.25.5",
     "fp-ts": "2.12.1",
     "io-ts": "2.2.16",

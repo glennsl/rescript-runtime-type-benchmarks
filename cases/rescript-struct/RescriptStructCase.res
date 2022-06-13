@@ -46,7 +46,7 @@ Benchmark.Case.make(
   "parseSafe",
   () => {
     let struct = makeStruct(~isStrict=false)
-    data => {
+    (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(parsed) => parsed
       | Error(message) => Js.Exn.raiseError(message)
@@ -61,7 +61,7 @@ Benchmark.Case.make(
   "parseStrict",
   () => {
     let struct = makeStruct(~isStrict=true)
-    data => {
+    (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(parsed) => parsed
       | Error(message) => Js.Exn.raiseError(message)
@@ -76,7 +76,7 @@ Benchmark.Case.make(
   "assertLoose",
   () => {
     let struct = makeStruct(~isStrict=false)
-    data => {
+    (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(_) => true
       | Error(message) => Js.Exn.raiseError(message)
@@ -91,7 +91,7 @@ Benchmark.Case.make(
   "assertStrict",
   () => {
     let struct = makeStruct(~isStrict=true)
-    data => {
+    (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(_) => true
       | Error(message) => Js.Exn.raiseError(message)

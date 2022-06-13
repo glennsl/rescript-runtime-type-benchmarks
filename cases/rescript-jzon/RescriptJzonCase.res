@@ -41,7 +41,7 @@ Benchmark.Case.make(
   "parseSafe",
   () => {
     let codec = makeCodec()
-    data => {
+    (. data) => {
       switch data->Jzon.decodeWith(codec) {
       | Ok(parsed) => parsed
       | Error(_) => Js.Exn.raiseError("error")
@@ -56,7 +56,7 @@ Benchmark.Case.make(
   "parseStrict",
   () => {
     let codec = makeCodec()
-    data => {
+    (. data) => {
       switch data->Jzon.decodeWith(codec) {
       | Ok(parsed) => parsed
       | Error(_) => Js.Exn.raiseError("error")
@@ -72,7 +72,7 @@ Benchmark.Case.make(
   "assertLoose",
   () => {
     let codec = makeCodec()
-    data => {
+    (. data) => {
       switch data->Jzon.decodeWith(codec) {
       | Ok(_) => true
       | Error(_) => Js.Exn.raiseError("error")
@@ -87,7 +87,7 @@ Benchmark.Case.make(
   "assertStrict",
   () => {
     let codec = makeCodec()
-    data => {
+    (. data) => {
       switch data->Jzon.decodeWith(codec) {
       | Ok(_) => true
       | Error(_) => Js.Exn.raiseError("error")

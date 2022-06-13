@@ -30,6 +30,7 @@ export const cases = [
   'rescript-struct',
   'rescript-jzon',
   'bs-json',
+  'decco',
 ] as const;
 
 export type CaseName = typeof cases[number];

@@ -26,7 +26,7 @@ Benchmark.Case.make(
   "parseSafe",
   () => {
     let decoder = makeDecoder()
-    decoder
+    (. data) => decoder(data)
   },
   (),
 )
@@ -36,7 +36,7 @@ Benchmark.Case.make(
   "parseStrict",
   () => {
     let decoder = makeDecoder()
-    decoder
+    (. data) => decoder(data)
   },
   ~options={disabled: true},
   (),
@@ -47,7 +47,7 @@ Benchmark.Case.make(
   "assertLoose",
   () => {
     let decoder = makeDecoder()
-    data => {
+    (. data) => {
       data |> decoder |> ignore
       true
     }
@@ -60,7 +60,7 @@ Benchmark.Case.make(
   "assertStrict",
   () => {
     let decoder = makeDecoder()
-    data => {
+    (. data) => {
       data |> decoder |> ignore
       true
     }
