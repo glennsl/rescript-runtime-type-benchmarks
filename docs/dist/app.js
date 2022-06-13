@@ -95,7 +95,7 @@ define("app", ["require", "exports", "preact", "vega", "vega-lite"], function (r
     vegaLite = __importStar(vegaLite);
     // which results are attempted to load
     // the first is selected automatically
-    var NODE_VERSIONS = [14];
+    var NODE_VERSIONS = [17, 16, 14, 12];
     // colors taken from https://colorbrewer2.org/?type=qualitative&scheme=Set3&n=12
     var COLORS = [
         '#8dd3c7',
@@ -402,7 +402,7 @@ define("app", ["require", "exports", "preact", "vega", "vega-lite"], function (r
                         justifyContent: 'space-between'
                     } },
                     (0, preact_1.h)("h1", null, "Runtype Benchmarks"),
-                    (0, preact_1.h)("a", { href: "https://github.com/moltar/typescript-runtime-type-benchmarks/" }, "Github Repository")),
+                    (0, preact_1.h)("a", { href: "https://github.com/DZakh/rescript-runtime-type-benchmarks" }, "Github Repository")),
                 (0, preact_1.h)("p", null, "Benchmark Comparison of Packages with Runtime Validation and TypeScript Support"),
                 (0, preact_1.h)("div", { style: { display: 'flex', margin: '1rem 0' } },
                     (0, preact_1.h)("div", { style: { width: '12rem', marginRight: '1rem' } },
