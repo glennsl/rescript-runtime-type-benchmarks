@@ -47,6 +47,7 @@
 
 - [rescript-struct](https://github.com/DZakh/rescript-struct)
 - [rescript-jzon](https://github.com/nkrkv/jzon)
+- [bs-json](https://github.com/glennsl/bs-json)
 
 ## Criteria
 

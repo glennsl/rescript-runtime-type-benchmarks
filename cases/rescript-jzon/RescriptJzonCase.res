@@ -1,42 +1,21 @@
-type options = {disabled: bool}
-@module("../../benchmarks")
-external createCase: (
-  string,
-  string,
-  (unit, 'data) => 'parsedData,
-  ~options: options=?,
-  unit,
-) => unit = "createCase"
-
-type nestedStruct = {foo: string, num: float, bool: bool}
-type struct = {
-  number: float,
-  negNumber: float,
-  maxNumber: float,
-  string: string,
-  longString: string,
-  boolean: bool,
-  deeplyNested: nestedStruct,
-}
-
 let makeCodec = () => {
   let nestedCodec = Jzon.object3(
-    ({foo, num, bool}) => (foo, num, bool),
+    ({Benchmark.Data.foo: foo, num, bool}) => (foo, num, bool),
     ((foo, num, bool)) => {foo: foo, num: num, bool: bool}->Ok,
     Jzon.field("foo", Jzon.string),
     Jzon.field("num", Jzon.float),
     Jzon.field("bool", Jzon.bool),
   )
   Jzon.object7(
-    ({number, negNumber, maxNumber, string, longString, boolean, deeplyNested}) => (
-      number,
+    ({
+      Benchmark.Data.number: number,
       negNumber,
       maxNumber,
       string,
       longString,
       boolean,
       deeplyNested,
-    ),
+    }) => (number, negNumber, maxNumber, string, longString, boolean, deeplyNested),
     ((number, negNumber, maxNumber, string, longString, boolean, deeplyNested)) =>
       {
         number: number,
@@ -57,7 +36,7 @@ let makeCodec = () => {
   )
 }
 
-createCase(
+Benchmark.Case.make(
   "rescript-jzon",
   "parseSafe",
   () => {
@@ -72,7 +51,7 @@ createCase(
   (),
 )
 
-createCase(
+Benchmark.Case.make(
   "rescript-jzon",
   "parseStrict",
   () => {
@@ -88,7 +67,7 @@ createCase(
   (),
 )
 
-createCase(
+Benchmark.Case.make(
   "rescript-jzon",
   "assertLoose",
   () => {
@@ -103,7 +82,7 @@ createCase(
   (),
 )
 
-createCase(
+Benchmark.Case.make(
   "rescript-jzon",
   "assertStrict",
   () => {

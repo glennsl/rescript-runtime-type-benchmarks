@@ -1,6 +1,6 @@
 {
   "name": "rescript-runtime-type-benchmarks",
-  "bs-dependencies": ["rescript-struct", "rescript-jzon"],
+  "bs-dependencies": ["rescript-struct", "rescript-jzon", "@glennsl/bs-json"],
   "suffix": ".bs.js",
   "package-specs": {
     "module": "commonjs",
@@ -9,6 +9,10 @@
   "sources": [
     {
       "dir": "cases",
+      "subdirs": true
+    },
+    {
+      "dir": "benchmarks",
       "subdirs": true
     }
   ]
