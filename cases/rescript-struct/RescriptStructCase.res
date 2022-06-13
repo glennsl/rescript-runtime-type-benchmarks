@@ -1,17 +1,10 @@
-let makeStruct = (~isStrict) => {
-  let nestedStruct = {
-    let struct = S.record3(
-      ~fields=(("foo", S.string()), ("num", S.float()), ("bool", S.bool())),
-      ~constructor=((foo, num, bool)) => {Benchmark.Data.foo: foo, num: num, bool: bool}->Ok,
-      (),
-    )
-    if isStrict {
-      struct
-    } else {
-      struct->S.Record.strip
-    }
-  }
-  let struct = S.record7(
+let makeStrictStruct = () => {
+  let nestedStruct = S.record3(
+    ~fields=(("foo", S.string()), ("num", S.float()), ("bool", S.bool())),
+    ~constructor=((foo, num, bool)) => {Benchmark.Data.foo: foo, num: num, bool: bool}->Ok,
+    (),
+  )
+  S.record7(
     ~fields=(
       ("number", S.float()),
       ("negNumber", S.float()),
@@ -34,18 +27,45 @@ let makeStruct = (~isStrict) => {
     },
     (),
   )
-  if isStrict {
-    struct
-  } else {
-    struct->S.Record.strip
-  }
+}
+
+let makeSafeStruct = () => {
+  let nestedStruct =
+    S.record3(
+      ~fields=(("foo", S.string()), ("num", S.float()), ("bool", S.bool())),
+      ~constructor=((foo, num, bool)) => {Benchmark.Data.foo: foo, num: num, bool: bool}->Ok,
+      (),
+    )->S.Record.strip
+  S.record7(
+    ~fields=(
+      ("number", S.float()),
+      ("negNumber", S.float()),
+      ("maxNumber", S.float()),
+      ("string", S.string()),
+      ("longString", S.string()),
+      ("boolean", S.bool()),
+      ("deeplyNested", nestedStruct),
+    ),
+    ~constructor=((number, negNumber, maxNumber, string, longString, boolean, deeplyNested)) => {
+      {
+        Benchmark.Data.number: number,
+        negNumber: negNumber,
+        maxNumber: maxNumber,
+        string: string,
+        longString: longString,
+        boolean: boolean,
+        deeplyNested: deeplyNested,
+      }->Ok
+    },
+    (),
+  )->S.Record.strip
 }
 
 Benchmark.Case.make(
   "rescript-struct",
   "parseSafe",
   () => {
-    let struct = makeStruct(~isStrict=false)
+    let struct = makeSafeStruct()
     (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(parsed) => parsed
@@ -60,7 +80,7 @@ Benchmark.Case.make(
   "rescript-struct",
   "parseStrict",
   () => {
-    let struct = makeStruct(~isStrict=true)
+    let struct = makeStrictStruct()
     (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(parsed) => parsed
@@ -75,7 +95,7 @@ Benchmark.Case.make(
   "rescript-struct",
   "assertLoose",
   () => {
-    let struct = makeStruct(~isStrict=false)
+    let struct = makeSafeStruct()
     (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(_) => true
@@ -90,7 +110,7 @@ Benchmark.Case.make(
   "rescript-struct",
   "assertStrict",
   () => {
-    let struct = makeStruct(~isStrict=true)
+    let struct = makeStrictStruct()
     (. data) => {
       switch data->S.parseWith(struct) {
       | Ok(_) => true
