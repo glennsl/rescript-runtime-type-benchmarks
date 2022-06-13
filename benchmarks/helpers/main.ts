@@ -33,6 +33,10 @@ export async function runAllBenchmarks() {
   for (const [benchmark, benchmarks] of getRegisteredBenchmarks()) {
     const summary = await runBenchmarks(benchmark, benchmarks);
 
+    if (!summary) {
+      continue;
+    }
+
     summary.results.forEach(({ name, ops, margin }) => {
       allResults.push({
         benchmark,
@@ -79,6 +83,10 @@ export async function createPreviewGraph() {
 
 // run a benchmark fn with benny
 async function runBenchmarks(name: string, cases: BenchmarkCase[]) {
+  if (cases.length === 0) {
+    return;
+  }
+
   const fns = cases.map(c => add(c.moduleName, () => c.run()));
 
   return suite(
